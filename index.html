@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acceso al Club</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="access-box">
+    <img src="OCAEC.png">
+    <h2>Bienvenido <br>o<br> Bienvenida</h2>
+    <p class="main-texts"><b class="main-text">C</b>lub de <b class="main-text">A</b>prendizaje de <b class="main-text">E</b>ducational <b class="main-text">C</b>lassrooms</p>
+    <section class="main-section">
+    <p style="font-weight: bold;">Ingresa tu código de acceso:</p>
+    <img style="width: 60%;" src="P2CAEC.png">
+    <input type="text" id="codigo" placeholder="mi codigo es:">
+    <button onclick="verificarCodigo()">ingresar</button>
+    <div id="result"></div>
+    </section>
+  </div>
+
+  <div id="areaPrivada" class="hidden">
+    <h2>📘 Bienvenido/a, <span id="nombreUsuario"></span></h2>
+    <p>Contenidos disponibles:</p>
+    <ul>
+      <li><a href="https://example.com/guia1.pdf" target="_blank">📄 Guía PDF</a></li>
+      <li><a href="https://youtube.com" target="_blank">🎥 Video</a></li>
+    </ul>
+  </div>
+  <div id="reciboBox" class="hidden">
+  <p>🧾 Tu recibo de este mes:</p>
+  <img id="reciboImg" src="" alt="Recibo mensual" style="max-width:100%; margin-top:10px;">
+  <br>
+  <a id="descargarRecibo" href="" download>📥 Descargar recibo</a>
+</div>
+
+<!-- Ventana emergente de advertencia -->
+<div id="modalBloqueo" class="modal hidden">
+  <div class="modal-content">
+    <h2>🚫 LO SENTIMOS</h2>
+    <p>
+      PERO ESTAREMOS DISPONIBLES EL <strong>LUNES 02 DE FEBRERO DEL 2026</strong><br><br>
+      CLARO, SI TE HAS INSCRITO.<br>
+      DE LO CONTRARIO, NO SERÁ POSIBLE TU INSCRIPCIÓN.<br><br>
+      PUEDES INSCRIBIRTE EN EL SIGUIENTE ENLACE:<br>
+      <a style="padding-top: 9vh;" id="enlaceFormsModal" href="#" target="_blank">Formulario de inscripción</a><br><br>
+      GRACIAS POR TU COMPRENSIÓN.
+    </p>
+    <button onclick="cerrarModal()">Cerrar</button>
+  </div>
+</div>
+
+
+<button class="main-close" onclick="cerrarPanel()" >Cerrar Ventana <br><p style="color: #007bff; padding: 0; margin: 0.2vh; margin-top: 0.5vh;">CAEC</p></button>
+
+
+
+<footer>
+    <p>&copy; Educational Classrooms</p>
+    <p>&trade; Club de Aprendizaje de Educational Classrooms</p>
+    <p>&reg; Técnico: <b>Angel Manuel Guevara Chavarría</b></p>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
