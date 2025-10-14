@@ -60,7 +60,7 @@ input {
 }
 
 .main-texts {
-    font-size: 1.5vh;
+    font-size: 1.3vh;
     border-bottom: 2px solid skyblue;
     color: #fff;
     width: 100%;
@@ -159,7 +159,7 @@ img {
 }
 
 footer {
-  font-size: 1.2vh; 
+  font-size: 1vh; 
   margin: 0;
   padding-top: 0.5vh;
   padding-bottom: 5vh;
@@ -177,6 +177,7 @@ footer {
   height: 15%;
   border-radius: 1vh;
 }
+
 
 
 
