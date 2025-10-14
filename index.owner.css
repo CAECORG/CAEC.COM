@@ -3,6 +3,11 @@ body {
   background-color: #fff8f0;
   padding: 40px;
   text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
 }
 
 input, button {
@@ -17,3 +22,4 @@ textarea {
   height: 150px;
   margin-top: 20px;
 }
+
