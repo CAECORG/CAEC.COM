@@ -60,7 +60,7 @@ input {
 }
 
 .main-texts {
-    font-size: 2vh;
+    font-size: 1.7vh;
     border-bottom: 2px solid skyblue;
     color: #fff;
     width: 100%;
@@ -170,6 +170,7 @@ footer {
   color: white;
   border-top-right-radius: 10px;
 }
+
 
 
 
