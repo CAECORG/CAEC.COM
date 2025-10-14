@@ -1,6 +1,6 @@
 body {
   font-family: Tahoma;
-  background: linear-gradient(to top, #054050, #052030);
+  background: linear-gradient(to top, #055060, #051020);
   text-align: center;
   padding: 0;
   margin-left: 0;
@@ -11,6 +11,21 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+
+}
+.main-clubes {
+  background-color: red;
+  width: 40%;
+  padding-bottom: 0;
+  border-radius: 1vh;
+  margin: auto;
+  padding: 0.5vh;
+  transform: background-color 0.3s, transition 0.3s;
+}
+
+.main-clubes:hover {
+  background-color: red;
+  transition: 0.3s;
 
 }
 
@@ -178,10 +193,9 @@ footer {
 }
 
 .microsoft-logo {
-  width: 15%;
-  height: 15%;
+  width: 10%;
+  height: 10%;
 }
-
 
 
 
