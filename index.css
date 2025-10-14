@@ -159,6 +159,7 @@ img {
 }
 
 footer {
+  font-size: 1.8vh; 
   margin: 0;
   padding-top: 0.5vh;
   padding-bottom: 5vh;
@@ -176,6 +177,7 @@ footer {
   height: 15%;
   border-radius: 1vh;
 }
+
 
 
 
