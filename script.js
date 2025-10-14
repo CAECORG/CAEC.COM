@@ -4,6 +4,8 @@ let codigosValidos = {
 
 let enlaceForms = "index.yetnot.html";
 
+let enlaceClubesModal = "index.portales.html";
+
 
 
 
@@ -113,4 +115,5 @@ function mostrarRecibo(codigo) {
   descargarRecibo.href = ruta;
   reciboBox.classList.remove("hidden");
 }
+
 
