@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel del Reforzador</title>
+  <link rel="stylesheet" href="index.owner.css">
+</head>
+<body>
+  <h2>🛠️ Panel del Reforzador</h2>
+  <input type="text" id="nuevoCodigo" placeholder="Código único">
+  <input type="text" id="nombrePersona" placeholder="Nombre completo">
+  <button onclick="agregarCodigo()">Agregar</button>
+
+  <input type="text" id="nuevoEnlace" placeholder="https://forms.office.com/...">
+  <button onclick="actualizarEnlace()">Actualizar enlace</button>
+
+  <textarea id="listaCodigos" readonly></textarea>
+
+  <button onclick="cerrarPanel()">🚪 Cerrar panel</button>
+
+
+  <script src="../script.js"></script>
+</body>
+</html>

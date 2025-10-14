@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff8f0;
+  padding: 40px;
+  text-align: center;
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  width: 80%;
+}
+
+textarea {
+  width: 90%;
+  height: 150px;
+  margin-top: 20px;
+}

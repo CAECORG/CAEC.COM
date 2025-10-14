@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel cerrado</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;      
+      font-family: 'Segoe UI', sans-serif;
+      background: repeating-linear-gradient(
+        to bottom,
+        #052030,
+        #052030 60px,
+        #0a2f45 60px,
+        #0a2f45 120px
+      );
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .mensaje-cierre {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .mensaje-cierre h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .mensaje-cierre p {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="mensaje-cierre">
+    <h1>👋 Panel cerrado</h1>
+    <p>Gracias por habernos visitado.<br>Puedes cerrar esta pestaña si lo deseás.</p>
+  </div>
+</body>
+</html>
