@@ -23,6 +23,7 @@ body {
     padding: 1vh;
     background-color: #ccc;
     letter-spacing: 0.1vh;
+    margin-bottom: 0;
 }
 
 .clbec-logo {
@@ -61,6 +62,7 @@ body {
     align-items: center;
     min-height: calc(31em + 31em);
     padding: 0;
+    margin-top: 1vh;
     margin-left: 2em;
     margin-right: 2em;
 }
@@ -125,3 +127,4 @@ body {
     margin: 0;
     text-align: center;
 }
+
