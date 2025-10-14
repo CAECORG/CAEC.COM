@@ -114,13 +114,3 @@ function mostrarRecibo(codigo) {
   reciboBox.classList.remove("hidden");
 }
 
-function cerrarPanel() {
-  if (document.getElementById("mensajeSalida")) return;
-
-  document.body.innerHTML = `
-    <div id="mensajeSalida">
-      <h2>👋 Panel cerrado</h2>
-      <p>Gracias por habernos visitado. Puedes cerrar esta pestaña si lo deseás.</p>
-    </div>
-  `;
-}
