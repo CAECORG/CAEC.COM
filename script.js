@@ -116,23 +116,6 @@ function mostrarRecibo(codigo) {
   reciboBox.classList.remove("hidden");
 }
 
-window.onload = function() {
-  const userAgent = navigator.userAgent;
-
-  if (!userAgent.includes("Edg")) {
-    const mensaje = `
-      ⚠️ CAEC ⚠️
-      Informamos a nuestros visitadores que nuestra pagina web no admite tu buscador.
-      Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.
-      ¿Deseas ser redirigido ahora?
-    `;
-
-    if (confirm(mensaje)) {
-      window.location.href = "microsoft-edge:" + window.location.href;
-    }
-  }
-};
-
 
 
 
