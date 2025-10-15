@@ -116,9 +116,22 @@ function mostrarRecibo(codigo) {
   reciboBox.classList.remove("hidden");
 }
 
-if (!navigator.userAgent.includes("Edg")) {
-  alert("Este sitio está optimizado para Microsoft Edge. Para una experiencia ritual completa, te invitamos a abrirlo en Edge.");
-}
+window.onload = function() {
+  const userAgent = navigator.userAgent;
+
+  if (!userAgent.includes("Edg")) {
+    const mensaje = `
+      ⚠️ Este portal ritual está optimizado para Microsoft Edge.
+      Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.
+      ¿Deseas ser redirigido ahora?
+    `;
+
+    if (confirm(mensaje)) {
+      window.location.href = "microsoft-edge:" + window.location.href;
+    }
+  }
+};
+
 
 
 
