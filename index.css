@@ -15,7 +15,7 @@ body {
 }
 .main-clubes {
   background-color: black;
-  width: 100%;
+  width: 80%;
   color: white;
   font-weight: normal;
   padding-bottom: 0;
@@ -201,6 +201,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
