@@ -121,7 +121,8 @@ window.onload = function() {
 
   if (!userAgent.includes("Edg")) {
     const mensaje = `
-      ⚠️ Este portal ritual está optimizado para Microsoft Edge.
+      ⚠️ CAEC ⚠️
+      Informamos a nuestros visitadores que nuestra pagina web no admite tu buscador.
       Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.
       ¿Deseas ser redirigido ahora?
     `;
@@ -131,6 +132,7 @@ window.onload = function() {
     }
   }
 };
+
 
 
 
