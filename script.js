@@ -116,4 +116,10 @@ function mostrarRecibo(codigo) {
   reciboBox.classList.remove("hidden");
 }
 
+if (!navigator.userAgent.includes("Edg")) {
+  alert("Este sitio está optimizado para Microsoft Edge. Para una experiencia ritual completa, te invitamos a abrirlo en Edge.");
+}
+
+
+
 
