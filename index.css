@@ -16,7 +16,6 @@ body {
 #contenedor {
   width: 100%;
   max-width: 50%;
-  box-sizing: border-box;
 }
 
 .gradient-text {
@@ -213,6 +212,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
