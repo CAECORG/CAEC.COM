@@ -21,7 +21,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(to right, yellow, white);
+  background: linear-gradient(to right, yellow, skyblue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -214,6 +214,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
