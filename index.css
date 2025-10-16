@@ -11,8 +11,13 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-
 }
+
+#contenedor {
+  transform: scale(0.8);
+  transform-origin: top center;
+}
+
 .main-clubes {
   background-color: black;
   width: 80%;
@@ -201,6 +206,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
