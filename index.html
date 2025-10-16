@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <script>
+<script>
 window.onload = function() {
   const userAgent = navigator.userAgent;
   const esEdge = userAgent.includes("Edg");
@@ -26,14 +26,31 @@ window.onload = function() {
     panel.style.alignItems = "center";
     panel.style.zIndex = "9999";
     panel.style.fontFamily = "Segoe UI, sans-serif";
-    panel.innerHTML = `
-      <h2>🌐 Portal ritual detectado</h2>
-      <p>Este sitio está optimizado para Microsoft Edge.</p>
-      <p>Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.</p>
-      <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 16px;">Abrir en Edge</button>
-      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 14px;">Continuar sin redirigir</button>
-    `;
 
+    // Animación CSS para el ícono
+    const estilo = document.createElement("style");
+    estilo.innerHTML = `
+      .icono-microsoft {
+        font-size: 40px;
+        animation: respirar 4s infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes respirar {
+        0% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+        100% { opacity: 0.8; transform: scale(1); }
+      }
+    `;
+    document.head.appendChild(estilo);
+
+    panel.innerHTML = `
+      <div class="icono-microsoft">🟥🟦🟩🟨</div>
+      <h2 style="font-size: 3vh;">Microsoft Edge</h2>
+      <p style="font-size: 2vh;">Este sitio está optimizado para Microsoft Edge.</p>
+      <p style="font-size: 2vh;">Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.</p>
+      <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 2vh;">Abrir en Edge</button>
+      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.5vh;">Continuar sin redirigir</button>
+    `;
     document.body.appendChild(panel);
 
     document.getElementById("redirigir").onclick = function() {
@@ -46,6 +63,7 @@ window.onload = function() {
   }
 };
 </script>
+
 
   <script>
   document.addEventListener('contextmenu', event => event.preventDefault());
@@ -111,6 +129,7 @@ window.onload = function() {
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
