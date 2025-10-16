@@ -13,6 +13,15 @@ body {
   -ms-user-select: none;
 }
 
+@media screen and (max-width: 600px) {
+  #contenedor {
+    transform: scale(0.85);
+    transform-origin: top center;
+    padding: 10px;
+  }
+}
+
+
 #contenedor {
   width: 50%;
   margin: 0 auto;
@@ -212,6 +221,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
