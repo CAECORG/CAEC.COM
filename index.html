@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<script>
+  <script>
 window.onload = function() {
   const userAgent = navigator.userAgent;
   const esEdge = userAgent.includes("Edg");
@@ -27,13 +27,17 @@ window.onload = function() {
     panel.style.zIndex = "9999";
     panel.style.fontFamily = "Segoe UI, sans-serif";
 
-    // Animación CSS para el ícono
+    // Estilo para ícono cuadrado
     const estilo = document.createElement("style");
     estilo.innerHTML = `
       .icono-microsoft {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0;
         font-size: 40px;
-        animation: respirar 4s infinite;
         margin-bottom: 20px;
+        animation: respirar 4s infinite;
       }
       @keyframes respirar {
         0% { opacity: 0.8; transform: scale(1); }
@@ -44,13 +48,19 @@ window.onload = function() {
     document.head.appendChild(estilo);
 
     panel.innerHTML = `
-      <div class="icono-microsoft">🟥🟦🟩🟨</div>
+      <div class="icono-microsoft">
+        <div>🟥</div>
+        <div>🟦</div>
+        <div>🟩</div>
+        <div>🟨</div>
+      </div>
       <h2 style="font-size: 3vh;">Microsoft Edge</h2>
-      <p style="font-size: 2vh;">Este sitio está optimizado para Microsoft Edge.</p>
+      <p style="font-size: 2vh;">Nuestra pagina web no esta optimizada para usarse en este navegador.</p>
       <p style="font-size: 2vh;">Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.</p>
       <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 2vh;">Abrir en Edge</button>
-      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.5vh;">Continuar sin redirigir</button>
+      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.7vh;">Continuar sin redirigir</button>
     `;
+
     document.body.appendChild(panel);
 
     document.getElementById("redirigir").onclick = function() {
@@ -129,6 +139,7 @@ window.onload = function() {
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
