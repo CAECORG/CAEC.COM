@@ -15,7 +15,7 @@ body {
 
 #contenedor {
   width: 100%;
-  max-width: 100%;
+  max-width: 50%;
   box-sizing: border-box;
 }
 
@@ -213,6 +213,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
