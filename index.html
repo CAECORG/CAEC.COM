@@ -55,9 +55,11 @@ window.onload = function() {
         <div>🟨</div>
       </div>
       <h2 style="font-size: 3vh;">Microsoft Edge</h2>
+      <h3 style="font-size: 2vh;">Club de Aprendizaje - Educational Classrooms <br><br>Advierte</h3>
       <p style="font-size: 2vh;">Nuestra pagina web no esta optimizada para usarse en este navegador.</p>
       <p style="font-size: 2vh;">Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.</p>
       <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 2vh;">Abrir en Edge</button>
+      <p style="font-size: 1.3vh;">Tecnico: Angel Manuel Guevara Chavarria</p>
       <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.7vh;">Continuar sin redirigir</button>
     `;
 
@@ -68,7 +70,8 @@ window.onload = function() {
     };
 
     document.getElementById("cerrar").onclick = function() {
-      panel.remove();
+      alert("Acceso denegado. Este portal solo admite navegadores éticos como Microsoft Edge.");
+      window.location.href = "about:blank";
     };
   }
 };
@@ -139,6 +142,7 @@ window.onload = function() {
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
