@@ -14,7 +14,7 @@ body {
 }
 
 #contenedor {
-  width: 100%;
+  width: 50%;
   max-width: 50%;
 }
 
@@ -212,6 +212,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
