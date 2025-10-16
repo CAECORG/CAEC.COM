@@ -75,8 +75,8 @@ window.onload = function() {
       <p style="font-size: 2vh;">Nuestra pagina web no esta optimizada para usarse en este navegador.</p>
       <p style="font-size: 2vh;">Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.</p>
       <p style="font-size: 2vh;">Debes de tener la aplicacion de Microsoft Edge instalada, de lo contrario no sera posible tu ingreso.</p>
-      <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 2vh; background: linear-gradient(to top, #F25022, #7FBA00); width: 60%; border: none;">Abrir en Edge</button>
-      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.7vh; background: linear-gradient(to top, #00A4EF, #FFB900); width: 45%; border: none;">CERRAR</button>
+      <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 2vh; background: linear-gradient(to right, #F25022, #7FBA00); width: 60%; border: none;">Abrir en Edge</button>
+      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.7vh; background: linear-gradient(to right, #00A4EF, #FFB900); width: 45%; border: none;">CERRAR</button>
       <p style="font-size: 1.3vh;">Tecnico: Angel Manuel Guevara Chavarria</p>
     `;
       document.body.appendChild(panel);
@@ -94,16 +94,22 @@ window.onload = function() {
     const accesoPanel = document.createElement("div");
     accesoPanel.className = "panel-acceso";
     accesoPanel.innerHTML = `
-      <h2 style="font-size: 3vh; margin-bottom: 10px;">🔐 Código de acceso requerido</h2>
-      <p style="font-size: 2vh;">Este portal está protegido por un sello digital. Ingresa el código único para continuar.</p>
-      <input id="codigoAcceso" type="password" placeholder="Código secreto" style="padding: 10px; font-size: 2vh; margin-top: 10px;">
-      <button id="validarCodigo" style="padding: 10px 20px; margin-top: 10px; font-size: 2vh; background: linear-gradient(to right, #F25022, #00A4EF); border: none;">Validar</button>
+        <div class="icono-microsoft">
+        <div>🟥</div>
+        <div>🟩</div>
+        <div>🟦</div>
+        <div>🟨</div>
+      </div>
+      <h2 style="font-size: 3vh; margin-bottom: 10px;">ESTUDIANTES</h2>
+      <p style="font-size: 2vh;">Nuestra pagina web está protegida por un cogido digital estudiantil. Por lo tanto ingresa su código único para continuar.</p>
+      <input id="codigoAcceso" type="password" placeholder="Código Estudiantil" style="padding: 10px; font-size: 2vh; margin-top: 10px;">
+      <button id="validarCodigo" style="padding: 10px 20px; margin-top: 10px; font-size: 2vh; background: linear-gradient(to right, #F25022, #00A4EF); border: none;">Validarme</button>
     `;
     document.body.appendChild(accesoPanel);
 
     document.getElementById("validarCodigo").onclick = function() {
       const codigoIngresado = document.getElementById("codigoAcceso").value;
-      const codigoCorrecto = "ÁNGEL2025"; // Puedes cambiarlo por tu código ritual
+      const codigoCorrecto = "ANGEL2025"; // Puedes cambiarlo por tu código ritual
 
       if (codigoIngresado === codigoCorrecto) {
         accesoPanel.remove();
@@ -182,6 +188,7 @@ window.onload = function() {
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
