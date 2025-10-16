@@ -22,6 +22,12 @@ body {
   transform-origin: top center;
 }
 
+.gradient-text {
+  background: linear-gradient(to right, skyblue, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .main-clubes {
   background-color: black;
   width: 80%;
@@ -210,6 +216,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
