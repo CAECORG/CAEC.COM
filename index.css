@@ -15,7 +15,11 @@ body {
 
 #contenedor {
   width: 100%;
-  transform-origin: center;
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
 }
 
 .gradient-text {
@@ -212,6 +216,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
