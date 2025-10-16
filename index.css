@@ -16,8 +16,6 @@ body {
 #contenedor {
   width: 100%;
   max-width: 400px;
-  padding: 20px;
-  box-sizing: border-box;
   transform: scale(0.8);
   transform-origin: top center;
 }
@@ -216,6 +214,7 @@ footer {
   width: 10%;
   height: 10%;
 }
+
 
 
 
