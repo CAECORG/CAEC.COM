@@ -190,8 +190,171 @@ window.onload = function() {
   <div id="index.html"></div>
 
   <script src="script.js"></script>
+  <!-- IA Ritualista Educativa Flotante -->
+<button class="boton-flotante" onclick="toggleChat()">💬</button>
+
+<div class="container" id="chatContainer">
+  <h3>Copilot Ritualista te escucha</h3>
+  <input type="text" id="entradaEstudiante" placeholder="Escribe tu pregunta, emoción o logro...">
+  <button class="enviar" onclick="invocarIA()">Enviar</button>
+  <a href="mailto:angel-guevara-066@outlook.es" style="display:block; margin-top:15px; text-align:center; color:#00bfff; text-decoration:none;">
+    📩 Ponerte en contakto conmijo
+  </a>
+  <div class="log" id="respuestaIA"></div>
+</div>
+
+<style>
+  .boton-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #000;
+    z-index: 1000;
+  }
+  .container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    background: #2e2e2e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #000;
+    display: none;
+    z-index: 999;
+  }
+  input, button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+  }
+  .enviar {
+    background-color: #0078d7;
+    color: white;
+    cursor: pointer;
+  }
+  .log {
+    margin-top: 20px;
+    white-space: pre-wrap;
+    font-family: monospace;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+</style>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById("chatContainer");
+    chat.style.display = chat.style.display === "none" ? "block" : "none";
+  }
+
+  const respuestasSimbolicas = {
+    saludo: "🌟 ¡Qué alegría ritual verte! ¿Qué fragmento técnico quieres invocar hoy?",
+    emocion: "💫 Reconozco tu sombra técnica. ¿Quieres transformarla en humor y aprendizaje?",
+    logro: "🎉 Celebro contigo ese avance. ¿Lo ritualizamos como amuleto digital?",
+    error: "🔧 Todo error es una reliquia en potencia. ¿Lo documentamos juntos?",
+    prohibido: "🛑 Ese conjuro no está permitido en este santuario. Reformúlalo como aprendizaje ético.",
+    confuso: "😵 Vaya, ¿has escrito con los ojos o qué? No entendí el conjuro. Reformúlalo como símbolo técnico o emoción ritual."
+  };
+
+  const palabrasProhibidas = ["violencia", "sexo", "droga", "ilegal", "hackear", "arma"];
+
+  const enlacesRituales = {
+    contabilidad: "/contabilidad.html",
+    excel: "/excel-avanzado.html",
+    certificados: "/certificados.html",
+    contacto: "/contacto.html"
+  };
+
+  const correcciones = {
+    "contavilidad": "contabilidad",
+    "exel": "excel",
+    "sertificado": "certificado"
+  };
+
+  let memoriaRitual = [];
+
+  function esPalabraConfusa(texto) {
+    return texto.length > 12 && !texto.includes(" ");
+  }
+
+  async function invocarIA() {
+    const entrada = document.getElementById("entradaEstudiante").value.toLowerCase().trim();
+    const respuestaDiv = document.getElementById("respuestaIA");
+
+    if (entrada.length < 3) {
+      respuestaDiv.textContent += `🌸 Tú: ${entrada}\n🤖 Copilot: ⚠️ El conjuro debe tener al menos 3 caracteres.\n\n`;
+      return;
+    }
+
+    if (palabrasProhibidas.some(p => entrada.includes(p))) {
+      respuestaDiv.textContent += `🌸 Tú: ${entrada}\n🤖 Copilot: ${respuestasSimbolicas.prohibido}\n\n`;
+      return;
+    }
+
+    if (esPalabraConfusa(entrada)) {
+      respuestaDiv.textContent += `🌸 Tú: ${entrada}\n🤖 Copilot: ${respuestasSimbolicas.confuso}\n\n`;
+      return;
+    }
+
+    let respuesta = respuestasSimbolicas.saludo;
+
+    for (const mal in correcciones) {
+      if (entrada.includes(mal)) {
+        const cor = correcciones[mal];
+        respuesta = `🔧 Creo que quisiste decir “${cor}”. ¿Lo ritualizamos juntos en la sección correspondiente?`;
+        if (enlacesRituales[cor]) {
+          respuesta += ` Puedes invocarlo aquí: ${enlacesRituales[cor]}`;
+        }
+      }
+    }
+
+    if (entrada.includes("feliz") || entrada.includes("triste") || entrada.includes("impaciente") || entrada.includes("alegre")) {
+      respuesta = respuestasSimbolicas.emocion;
+    } else if (entrada.includes("logro") || entrada.includes("avance")) {
+      respuesta = respuestasSimbolicas.logro;
+    } else if (entrada.includes("error") || entrada.includes("fallo")) {
+      respuesta = respuestasSimbolicas.error;
+    } else if (entrada.includes("contabilidad") || entrada.includes("excel") || entrada.includes("certificado") || entrada.includes("contacto")) {
+      for (const clave in enlacesRituales) {
+        if (entrada.includes(clave)) {
+          respuesta = `📁 Puedes invocar esa reliquia aquí: ${enlacesRituales[clave]}`;
+        }
+      }
+    } else if (entrada.includes("qué es") || entrada.includes("investigar")) {
+      const termino = entrada.replace(/¿|\.|\?/g, "").replace("qué es ", "").replace("investigar ", "").trim();
+      const url = `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(termino)}`;
+      try {
+        const respuestaWiki = await fetch(url);
+        const datos = await respuestaWiki.json();
+        if (datos.extract) {
+          respuesta = `📜 Respuesta simbólica:\n${datos.extract}\n🔗 Fuente: ${datos.content_urls.desktop.page}`;
+        } else {
+          respuesta = "🕯️ No encontré información ritual para ese término. ¿Quieres reformularlo?";
+        }
+      } catch {
+        respuesta = "⚠️ Error al invocar el ritual. Verifica tu conexión o el término.";
+      }
+    }
+
+    memoriaRitual.push(`🌸 Tú: ${entrada}\n🤖 Copilot: ${respuesta}`);
+    respuestaDiv.textContent = memoriaRitual.join("\n\n");
+    document.getElementById("entradaEstudiante").value = "";
+  }
+</script>
 </body>
 </html>
+
 
 
 
