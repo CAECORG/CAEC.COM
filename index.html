@@ -1,425 +1,308 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>CAEC</title>
-  <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <!-- IA Ritualista Educativa Flotante -->
-<button class="boton-flotante" onclick="toggleChat()">💬</button>
-
-<div class="container" id="chatContainer">
-  <h3>Copilot Ritualista te escucha</h3>
-  <input type="text" id="entradaEstudiante" placeholder="Escribe tu pregunta, emoción o logro...">
-  <button class="enviar" onclick="invocarIA()">Enviar</button>
-  <a href="mailto:angel-guevara-066@outlook.es" style="display:block; margin-top:15px; text-align:center; color:#00bfff; text-decoration:none;">
-    📩 Ponerte en contakto conmijo
-  </a>
-  <div class="log" id="respuestaIA"></div>
-</div>
-
-<style>
-  .boton-flotante {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #0078d7;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #000;
-    z-index: 10000;
-  }
-  .container {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 350px;
-    background: #2e2e2e;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #000;
-    display: none;
-    z-index: 10001;
-  }
-  input, button {
-    padding: 10px;
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 4px;
-    border: none;
-  }
-  .enviar {
-    background-color: #0078d7;
-    color: white;
-    cursor: pointer;
-  }
-  .log {
-    margin-top: 20px;
-    white-space: pre-wrap;
-    font-family: monospace;
-    max-height: 200px;
-    overflow-y: auto;
-  }
-</style>
-
-<script>
-  function toggleChat() {
-    const chat = document.getElementById("chatContainer");
-    chat.style.display = chat.style.display === "none" ? "block" : "none";
-  }
-
-  const respuestasSimbolicas = {
-    saludo: "🌟 ¡Qué alegría ritual verte! ¿Qué fragmento técnico quieres invocar hoy?",
-    emocion: "💫 Reconozco tu sombra técnica. ¿Quieres transformarla en humor y aprendizaje?",
-    logro: "🎉 Celebro contigo ese avance. ¿Lo ritualizamos como amuleto digital?",
-    error: "🔧 Todo error es una reliquia en potencia. ¿Lo documentamos juntos?",
-    prohibido: "🛑 Ese conjuro no está permitido en este santuario. Reformúlalo como aprendizaje ético.",
-    confuso: "😵 Vaya, ¿has escrito con los ojos o qué? No entendí el conjuro. Reformúlalo como símbolo técnico o emoción ritual."
-  };
-
-  const palabrasProhibidas = ["violencia", "sexo", "droga", "ilegal", "hackear", "arma"];
-
-  const enlacesRituales = {
-    contabilidad: "/contabilidad.html",
-    excel: "/excel-avanzado.html",
-    certificados: "/certificados.html",
-    contacto: "/contacto.html"
-  };
-
-  const correcciones = {
-    "contavilidad": "contabilidad",
-    "exel": "excel",
-    "sertificado": "certificado"
-  };
-
-  let memoriaRitual = [];
-
-  function esPalabraConfusa(texto) {
-    return texto.length > 12 && !texto.includes(" ");
-  }
-
-  async function invocarIA() {
-    const entrada = document.getElementById("entradaEstudiante").value.toLowerCase().trim();
-    const respuestaDiv = document.getElementById("respuestaIA");
-
-    if (entrada.length < 3) {
-      respuestaDiv.textContent += `🌸 Tú: ${entrada}\n🤖 Copilot: ⚠️ El conjuro debe tener al menos 3 caracteres.\n\n`;
-      return;
-    }
-
-    if (palabrasProhibidas.some(p => entrada.includes(p))) {
-      respuestaDiv.textContent += `🌸 Tú: ${entrada}\n🤖 Copilot: ${respuestasSimbolicas.prohibido}\n\n`;
-      return;
-    }
-
-    if (esPalabraConfusa(entrada)) {
-      respuestaDiv.textContent += `🌸 Tú: ${entrada}\n🤖 Copilot: ${respuestasSimbolicas.confuso}\n\n`;
-      return;
-    }
-
-    let respuesta = respuestasSimbolicas.saludo;
-
-    for (const mal in correcciones) {
-      if (entrada.includes(mal)) {
-        const cor = correcciones[mal];
-        respuesta = `🔧 Creo que quisiste decir “${cor}”. ¿Lo ritualizamos juntos en la sección correspondiente?`;
-        if (enlacesRituales[cor]) {
-          respuesta += ` Puedes invocarlo aquí: ${enlacesRituales[cor]}`;
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="index.scc">
+        <title>Clubes de Aprendizaje - EC</title>
+    </head>
+    <style>
+        body {
+            background: linear-gradient(to left, black, gray, black);
+            font: bold;
+            font-family: tahoma;
+            font-size: 200%;
+            text-align: center;
+            margin: 0;
+            padding: 0;
         }
-      }
-    }
-
-    if (entrada.includes("feliz") || entrada.includes("triste") || entrada.includes("impaciente") || entrada.includes("alegre")) {
-      respuesta = respuestasSimbolicas.emocion;
-    } else if (entrada.includes("logro") || entrada.includes("avance")) {
-      respuesta = respuestasSimbolicas.logro;
-    } else if (entrada.includes("error") || entrada.includes("fallo")) {
-      respuesta = respuestasSimbolicas.error;
-    } else if (entrada.includes("contabilidad") || entrada.includes("excel") || entrada.includes("certificado") || entrada.includes("contacto")) {
-      for (const clave in enlacesRituales) {
-        if (entrada.includes(clave)) {
-          respuesta = `📁 Puedes invocar esa reliquia aquí: ${enlacesRituales[clave]}`;
+        .logo {
+            width: 40%;
+            border: none;
+            border-radius: none;
+            margin: 0.5%;
+            padding: 0.5%;
         }
-      }
-    } else if (entrada.includes("qué es") || entrada.includes("investigar")) {
-      const termino = entrada.replace(/¿|\.|\?/g, "").replace("qué es ", "").replace("investigar ", "").trim();
-      const url = `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(termino)}`;
-      try {
-        const respuestaWiki = await fetch(url);
-        const datos = await respuestaWiki.json();
-        if (datos.extract) {
-          respuesta = `📜 Respuesta simbólica:\n${datos.extract}\n🔗 Fuente: ${datos.content_urls.desktop.page}`;
-        } else {
-          respuesta = "🕯️ No encontré información ritual para ese término. ¿Quieres reformularlo?";
+        #title {
+            background: linear-gradient(to left, white, black, white);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            padding: 0;
+            margin: 0;
         }
-      } catch {
-        respuesta = "⚠️ Error al invocar el ritual. Verifica tu conexión o el término.";
-      }
-    }
-
-    memoriaRitual.push(`🌸 Tú: ${entrada}\n🤖 Copilot: ${respuesta}`);
-    respuestaDiv.textContent = memoriaRitual.join("\n\n");
-    document.getElementById("entradaEstudiante").value = "";
-  }
-
-  window.onload = function() {
-  const userAgent = navigator.userAgent;
-  const esEdge = userAgent.includes("Edg");
-
-  const estilo = document.createElement("style");
-  estilo.innerHTML = `
-    .icono-microsoft {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 0;
-      font-size: 40px;
-      margin-bottom: 20px;
-      animation: respirar 4s infinite;
-    }
-    @keyframes respirar {
-      0%   { opacity: 0.6; transform: scale(1); }
-      25%  { opacity: 1; transform: scale(1.15); }
-      50%  { opacity: 0.8; transform: scale(1); }
-      75%  { opacity: 1; transform: scale(1.15); }
-      100% { opacity: 0.6; transform: scale(1); }
-    }
-    .panel-acceso {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      font-family: Segoe UI, sans-serif;
-    }
-  `;
-    document.head.appendChild(estilo);
-
-  if (!esEdge) {
-    const panel = document.createElement("div");
-    panel.style.position = "fixed";
-    panel.style.top = "0";
-    panel.style.left = "0";
-    panel.style.width = "100%";
-    panel.style.height = "100%";
-    panel.style.backgroundColor = "rgba(0,0,0,0.85)";
-    panel.style.color = "#fff";
-    panel.style.display = "flex";
-    panel.style.flexDirection = "column";
-    panel.style.justifyContent = "center";
-    panel.style.alignItems = "center";
-    panel.style.zIndex = "9999";
-    panel.style.fontFamily = "Segoe UI, sans-serif";
-
-    panel.innerHTML = `
-      <div class="icono-microsoft">
-        <div>🟥</div>
-        <div>🟩</div>
-        <div>🟦</div>
-        <div>🟨</div>
-      </div>
-      <h2 style="font-size: 3vh; color: #007bff;">Microsoft Edge</h2>
-      <h3 style="font-size: 2vh;">Club de Aprendizaje - Educational Classrooms <br><br><p style="color: red; font-size: 3vh;">ADVIERTE</p></h3>
-      <p style="font-size: 2vh;">Nuestra pagina web no esta optimizada para usarse en este navegador.</p>
-      <p style="font-size: 2vh;">Para una experiencia completa, ética y protegida, te invitamos a abrirlo en Edge.</p>
-      <p style="font-size: 2vh;">Debes de tener la aplicacion de Microsoft Edge instalada, de lo contrario no sera posible tu ingreso.</p>
-      <button id="redirigir" style="padding: 10px 20px; margin-top: 20px; font-size: 2vh; background: linear-gradient(to right, #F25022, #FFB900); width: 60%; border: none;">Abrir en Edge</button>
-      <button id="cerrar" style="padding: 6px 12px; margin-top: 10px; font-size: 1.7vh; background: linear-gradient(to right, #00A4EF, #7FBA00); width: 45%; border: none;">CERRAR</button>
-      <p style="font-size: 1.8vh;">Tecnico: Angel Manuel Guevara Chavarria</p>
-    `;
-      document.body.appendChild(panel);
-
-    document.getElementById("redirigir").onclick = function() {
-      window.location.href = "microsoft-edge:" + window.location.href;
-    };
-
-    document.getElementById("cerrar").onclick = function() {
-      alert("Acceso denegado. Este portal solo admite navegadores éticos como Microsoft Edge.");
-      window.location.href = "about:blank";
-    };
-  } else {
-    // Validación de código en Edge
-    const accesoPanel = document.createElement("div");
-    accesoPanel.className = "panel-acceso";
-    accesoPanel.innerHTML = `
+        #subtitle {
+            background: linear-gradient(to right, white, #007bff, white);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            padding: 0;
+            margin: 0;
+            font-size: 220%;
+        }
+        #portales {
+            background: linear-gradient(to right, black, skyblue, black);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            padding: 0;
+            margin: 0;
+            font-size: 220%;
+        }
+        .icono-microsoft {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+            width: 0;
+            border-radius: 4px;
+            margin: auto;
+            margin-left: 45%;
+            padding-top: 10%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        footer {
+            background: linear-gradient(to bottom, black, white, black);
+            padding: 5%;
+            margin-top: 20%;
+        }
+        .section {
+            background-color: none;
+            width: 100%;
+            display: fixed;
+            position: relative;
+            border: none;
+        }
+        h1 {
+            margin: 5%;
+            padding: 0;
+            color: white;
+        }
+        form {
+            display: grid;
+            border: none;
+            grid-template-columns: 2fr;
+            grid-template-rows: 2fr;
+            gap: 0;
+            border-radius: 4px;
+            margin: 5%;
+            padding-top: 10%;
+            padding-left: 0;
+            padding-right: 0;
+            color: white;
+            font-weight: bold;   
+        }
+        label {
+            text-align: left;
+            width: 100%;
+            font-size: 130%;
+        }
+        input {
+            background: linear-gradient(to right, #111, #333, #555);
+            box-shadow: 0 0 50px 5px black;
+            border: none;
+            color: white;
+            font-size: 100%;
+            padding: 5%;
+            margin-top: 4%;
+            font-size: 110%;
+            width: 100%;
+        }
+        table {
+            align-items: center;
+        }
+        tr {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background-color: none;
+        }
+        td {
+            display: inline-flex;
+            box-shadow: none;
+            border: none;
+            margin: 5%;
+        }
+        #excel, #project, #visio, #word, #access, #publisher, #vsc, #powerbi, #powerpoint {
+            box-shadow: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        #mujer, #hombre, #noElegir {
+            display: inline-flex;
+            position: relative;
+            margin: 5% auto;
+            height: 100%;
+            width: 10%;
+            margin-top: 10%;
+            justify-content: center;
+            text-align: right;
+            background-color: none;
+        }
+        .register {
+            background-color: #111;
+            margin: 0 auto;
+            padding: 3%;
+            font-size: 100%;
+            width: 50%;
+        }
+    </style>
+    <body>
+        <img class="logo" alt="logo" src="https://static.vecteezy.com/system/resources/previews/013/261/075/non_2x/open-image-3d-illustration-free-png.png">
+        <header class="main-header">
+            <h1 id="title"></h1>
+            <h2 id="subtitle"></h2>
+            <h3 id="portales"></h3>
+            <div class="icono-microsoft">
+                <div>🟥</div>
+                <div>🟩</div>
+                <div>🟦</div>
+                <div>🟨</div>
+            </div>
+        </header>
+        <section class="section">
+            <h1>REGISTRO 2026</h1>
+            <form>
+                    <label>Nombre:</label>
+                    <input type="text" placeholder="ingresa tu primer nombre:"> <br> <br>
+                    <label>Apellido:</label>
+                    <input type="text" placeholder="ingresa tu primer apellido:"> <br> <br>
+                    <label>Correo:</label>
+                    <input type="text" placeholder="ingresa tu correo de google:"> <br> <br>
+                    <label>Numero de telefono:</label>
+                    <input type="text" placeholder="ingrese solo los ocho digitos sin caracteres:"> <br> <br>
+                    <label>Genero:</label>
+                    <input type="radio" name="genero" id="hombre" value="Hombre">
+                    <label for="hombre" style="color: #007bff; padding-top: 5%; text-align: center; z-index: 9999; margin-top: 0; margin-bottom: 0;">Hombre</label><br>
+                    <input type="radio" name="genero" id="mujer" value="Mujer">
+                    <label for="mujer" style="color: pink; padding-top: 5%; text-align: center; z-index: 9999; margin-bottom: 0; margin-top: 0;">Mujer</label><br>
+                    <input type="radio" name="genero" id="noElegir" value="Prefiero no elegir" onchange="mostrarNota()">
+                    <label for="noElegir" style="color: orange; padding-top: 5%; text-align: center; z-index: 9999; margin-bottom: 5%; margin-top: 0;">Prefiero no elegir</label><br>
+                    <p id="nota" style="display:none; color: #fdfdfd; font-size: 1.8vh;">
+                    Nota: se recomienda elegir uno de los géneros asignados, para llevar un mejor registro y control para los certificados.</p>
+                    <label>Fecha de registro:</label>
+                    <input type="date">   
+            </form>
+        </section>
         <div class="icono-microsoft">
-        <div>🟥</div>
-        <div>🟩</div>
-        <div>🟦</div>
-        <div>🟨</div>
-      </div>
-      <h1 style="font-size: 4vh;" class="gradient-text">CAEC</h1>
-      <h2 style="font-size: 3vh;">BIENVENIDOS</h2><br><br>
-      <h2 style="font-size: 3vh; color: #007bff;">Microsoft Edge</h2><br><br>
-      <h2 style="font-size: 3vh; margin-bottom: 10px;">SOLO PARA ESTUDIANTES</h2>
-      <p style="font-size: 2vh;">Nuestra pagina web está protegida por un cogido digital estudiantil.<br><br>Por lo tanto ingresa tu código único para continuar.</p>
-      <input id="codigoAcceso" type="password" placeholder="Código Estudiantil" style="padding: 10px; font-size: 2vh; margin-top: 10px; background-color: none; color: white;" class="gradient-text">
-      <button id="validarCodigo" style="padding: 10px 20px; margin-top: 10px; font-size: 2vh; background: linear-gradient(to right, #F25022, #00A4EF); border: none;">Validarme</button>
-      <p style="font-size: 1.7vh;">Tecnico: Angel Manuel Guevara Chavarria</p>
-    `;
-    document.body.appendChild(accesoPanel);
+                <div>🟥</div>
+                <div>🟩</div>
+                <div>🟦</div>
+                <div>🟨</div>
+            </div>
+        <section class="section">
+            <h1>Seleccione un Club</h1>
+            <form>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="excel" name="club" value="Excel" onclick="soloUno(this)">
+                            <label>Club de Microsoft Excel</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="project" name="club" value="Project" onclick="soloUno(this)">
+                            <label>Club de Microsoft Project</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="word" name="club" value="Word" onclick="soloUno(this)">
+                            <label>Club de Microsoft Word</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="access" name="club" value="Access" onclick="soloUno(this)">
+                            <label>Club de Microsoft Access</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="visio" name="club" value="Visio" onclick="soloUno(this)">
+                            <label>Club de Microsoft Visio</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="publisher" name="club" value="Publisher" onclick="soloUno(this)">
+                            <label>Club de Microsoft Publisher</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="vsc" name="club" value="VSC" onclick="soloUno(this)">
+                            <label>Club de Microsoft Visual Studio Code</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="powerbi" name="club" value="PowerBI" onclick="soloUno(this)">
+                            <label>Club de Microsoft Power BI</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="powerpoint" name="club" value="PowerPoint" onclick="soloUno(this)">
+                            <label>Club de Microsoft Power Point</label>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+        <form action="https://formsubmit.co/angelguevara066@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://mipaginawebreponsive.html">
+            <button class="register">Enviar mi registro</button></form>
+    </body>
+    <script>
+  function mostrarNota() {
+    const nota = document.getElementById("nota");
+    const noElegir = document.getElementById("noElegir");
 
-    document.getElementById("validarCodigo").onclick = function() {
-      const codigoIngresado = document.getElementById("codigoAcceso").value;
-      const codigoCorrecto = "nocode"; // Puedes cambiarlo por tu código ritual
-
-      if (codigoIngresado === codigoCorrecto) {
-        accesoPanel.remove();
-      } else {
-        alert("⚠️ Código incorrecto. El acceso ha sido bloqueado.");
-        window.location.href = "about:blank";
-      }
-    };
+    if (noElegir.checked) {
+      nota.style.display = "block";
+    } else {
+      nota.style.display = "none";
+    }
   }
-};
+
+  // También ocultamos la nota si se elige otra opción
+  document.getElementById("hombre").addEventListener("change", () => {
+    document.getElementById("nota").style.display = "none";
+  });
+
+  document.getElementById("mujer").addEventListener("change", () => {
+    document.getElementById("nota").style.display = "none";
+  });
 </script>
-
-
-
-  <script>
-  document.addEventListener('contextmenu', event => event.preventDefault());
+    <script>
+  function soloUno(checkbox) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="club"]');
+    checkboxes.forEach((item) => {
+      if (item !== checkbox) item.checked = false;
+    });
+  }
 </script>
-  <div id="access-box">
-    <img src="OCAEC.png" ondragstart="return false;">
-    <h2>PORTAL</h2>
-    <p class="main-texts">Club de Aprendizaje <br> Educational Classrooms</p>
-    <section class="main-section">
-    <p style="font-weight: bold; font-size: 1.7vh;">Ingresa tu código de acceso:</p>
-    <img style="width: 60%;" src="P2CAEC.png" ondragstart="return false;">
-    <input type="text" id="codigo" placeholder="mi codigo es:">
-    <button onclick="verificarCodigo()" style="background-color: #053040; width: 50%; padding: 0.5vh;">ingresar</button>
-      <br>
-        <img class="microsoft-logo" src="df582b2a-7ee7-4f4d-becc-79e07984ebbc.jpg" ondragstart="return false;">
-    <div id="result"></div>
-    </section>
-  </div>
-
-  <div id="areaPrivada" class="hidden">
-    <h2>📘 Bienvenido/a, <span id="nombreUsuario"></span></h2>
-    <p>Contenidos disponibles:</p>
-    <ul>
-      <li><a href="# disabled-link" target="_blank">📄 Guía PDF</a></li>
-      <li><a href="# disabled-link" target="_blank">🎥 Video</a></li>
-    </ul>
-  </div>
-  <div id="reciboBox" class="hidden">
-  <p>🧾 Tu recibo de este mes:</p>
-  <img id="reciboImg" src="" alt="Recibo mensual" style="max-width:100%; margin-top:10px;">
-  <br>
-  <a id="descargarRecibo" href="" download>📥 Descargar recibo</a>
-</div>
-
-<!-- Ventana emergente de advertencia -->
-<div id="modalBloqueo" class="modal hidden">
-  <div class="modal-content">
-    <h2>Clases Activas</h2>
-    <p>
-      No estamos disponibles para iniciar tu registro, nuestras clases se encuentran activas actualmente, pero puedes volver este: <br><strong>Lunes 01 de diciembre del 2025</strong> en donde podras encontrar habilitado el enlace de <b>Inscripcion.</b><br><br>
-      Cualquier duda, puedes ponerte en contacto con el Tecnico Reforzador.<br><br>
-      Conocido todo esto, el ingreso esta temporalmente desactivado.<br><br>
-      Puedes iniciar tu registro para tu inscripcion en el siguiente enlace:<br>
-      <a id="enlaceFormsModal" href="index.yetnot.html" target="_blank">Registro de inscripción</a><br><br>
-      GRACIAS POR TU COMPRENSIÓN.
-    </p>
-  </p>
-    <button onclick="cerrarModal()">Cerrar</button>
-  </div>
-</div>
-
-
-<a href="index.endall.html"><button class="main-close">Pagos de Inscripciones<br><p style="color: #007bff; padding: 0; margin: 0.2vh; margin-top: 0.5vh;">CAEC</p></button></a>
-          <a id="enlaceClubesModal" href="index.portales.html" target="_blank"><button class="main-clubes">Todos nuestros clubes<br><b style="color: #007bff; font-weight: bold;">CAEC</button></b></a><br><br>
+<script>
+  const title = "Club Educativo";
+  const subtitle = "Educational Classrooms";
+  const portales = "Portales Educativos";
+  const velocidad1 = 100;
+  const velocidad2 = 100;
+  const velocidad3 = 100;
+  let a = 0;
+  let e = 0;
+  let i = 0;
+  function escribir() {
+    if (a < title.length) {
+      document.getElementById("title").innerHTML += title.charAt(a);
+      a++;
+    }
+    if (e < subtitle.length) {
+      document.getElementById("subtitle").innerHTML += subtitle.charAt(e);
+      e++;
+    }
+    if (i < portales.length) {
+      document.getElementById("portales").innerHTML += portales.charAt(i);
+      i++;
+    }
+    if (a < title.length || e < subtitle.length || i < portales.length) {
+      setTimeout(escribir, 100);
+    }
+  }
+  window.onload = escribir;
+</script>
 <footer>
-    <p>&copy; Educational Classrooms</p>
-    <p>&trade; Club de Aprendizaje de Educational Classrooms</p>
-    <p>&reg; Técnico: <b>Angel Manuel Guevara Chavarría</b></p>
+    <p>&reg; Educational Classrooms - Todos los derechos reservados 2025</p>
+    <p>&copy; Club Educativo 2026</p>
+    <p>&trade; Tec: Angel Guevara</p>
 </footer>
-
-  <div id="index.html"></div>
-
-  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
